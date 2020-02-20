@@ -30,9 +30,9 @@ void setup() {
 void draw() {
   noStroke();
   //background colors
-  fill(#faf0e6);
+  fill(#e3e3e3);
   rect(0, 0, width/2, height);
-  fill(#fff5ee);
+  fill(#ececec);
   rect(360, 0, width/2, height);
   
   strokeWeight(8);
@@ -56,21 +56,24 @@ void draw() {
     posX2 = (posX) + (width/2) + 10;
     posY2 = posY;
     
-    stroke(#fdf5e6);
+    stroke(#e7e7e7);
     line(prevX, prevY, posX, posY);
     
-    stroke(#faf0e6);
+    stroke(#e6e6e6);
     line(prevX2, prevY2, posX2, posY2);
   }
 }
 
-void mousePressed() {
-  redraw();
-}
+//void mousePressed() {
+//  redraw();
+//}
 
 void keyPressed() {
   if(key == 's' || key == 'S') {
     saveFrame("images/random_nude-###.jpg");
     println("image saved");
+  }
+  if (key == ' ') {
+      redraw();
   }
 }

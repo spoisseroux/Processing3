@@ -20,13 +20,13 @@ void draw() {
   }
 }
 
-void mousePressed() {
-  redraw();
-}
-
 void keyPressed() {
   if(key == 's' || key == 'S') {
     saveFrame("images/bool_grid-###.jpg");
     println("image saved");
+  }
+  
+  if(key == ' '){
+    redraw();
   }
 }
