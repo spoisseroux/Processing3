@@ -1,25 +1,25 @@
 float posX, posY;
 
 void setup() {
-  size(540, 720);
+  size(540, 540);
   posY = height/2;
-  background(#FFFFFF);
+  background(#F7F7F7);
  
 }
 
 void draw() {
-    fill(#000000);
-    stroke(#FFFFFF);
+    fill(#5d9cfd);
+    stroke(#F7F7F7);
     posX += 20;
     rect(posX, posY, 20, random(10, 256));
     rect(posX, posY, 20, random(-256, -10));
     if (posX >= 520) {
-      delay(3000);
-      background(#FFFFFF);
+      delay(1000);
+      background(#F7F7F7);
       posX = 0;
       
     }
-    delay(256);
+    delay(50);
 }
 
 void keyPressed() {

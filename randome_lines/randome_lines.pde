@@ -2,8 +2,9 @@ float posX, posY, prevX, prevY;
 int numberOfLines = 100;
 
 void setup() {
-  fullScreen();
-  stroke(#000000);
+  size(500, 500);
+  stroke(#F3F5BE);
+  stroke(#FFEA74);
   strokeWeight(3);
   noLoop();
   posX = width/2;
@@ -11,7 +12,7 @@ void setup() {
 }
 
 void draw() {
-  background(#FFFFFF);
+  background(#F7F7F7);
   for(int i = 0; i < numberOfLines; i++) {
     prevX = posX;
     prevY = posY;

@@ -11,9 +11,9 @@ void draw() {
     for(int j = (width/tiles) - width/tiles; j < height; j += (height/tiles)){
       int a = int(random(2));
       if (a == 0){
-        fill(0);
+        fill(#d0e2fe);
       } else {
-        fill(255);
+        fill(#5d9cfd);
       }
       square(i, j, width/tiles);
     }
