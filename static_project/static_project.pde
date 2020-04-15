@@ -17,13 +17,13 @@ void draw() {
   randomc = int(random(1,4));
   
   if (randomc == 1) {
-    in=(#ffbbcc);
+    in=(#EDE3E9);
   } else if (randomc == 2) {
-    in=(#ffcccc);
+    in=(#E3E4ED);
   } else if (randomc == 3) {
-    in=(#ffddcc);
+    in=(#EDE3E5);
   } else if (randomc == 4) {
-    in=(#ffeecc);
+    in=(#EDEDE3);
   } 
   
   out1=(in - colorcng);
