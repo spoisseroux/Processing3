@@ -4,11 +4,11 @@ static final String CAMERA_NAME = "FaceTime HD Camera";
 Capture video;
 color black = #000000;
 float triCount = 0;
-int pixelSize = 2;
+int pixelSize = 1;
+int num = 0;
 
 void setup() {
-  size(640,480,P3D);
-  background(000000);
+  size(800,600,P3D);
   noStroke();
   smooth();
   saturation(0);
@@ -21,55 +21,23 @@ void setup() {
 
 void draw() {
   clear();
-  mirrorCam();
+  //background(#FFFFFF);
+  image(video, 2.4*(-width/4), height/4);
+  //mirrorCam();
   addFilter();
-  //tri3D();
  
 }
 
 void mirrorCam() {
   pushMatrix();
-  scale(-1,1);
+  scale(-1.5,1.5);
   translate(100, 100, 0);
   rotateX(-PI/8);
   rotateY(-PI/8);
   rotateZ(PI/8);
-  tint(0, 153, 204);
-  image(video, 2.4*(-width/4), height/4);
+  tint(0, 153, 204, 126); //blue at half transpar
+  
   popMatrix();
-}
-
-void tri3D() {
-  pushMatrix();
-  translate(1.4*width/2, height/2, 0);
-  stroke(255);
-  rotateX(PI/2);
-  rotateZ(-PI/6 + triCount);
-  noFill();
-
-  beginShape();
-  vertex(-100, -100, -100);
-  vertex( 100, -100, -100);
-  vertex(   0,    0,  100);
-
-  vertex( 100, -100, -100);
-  vertex( 100,  100, -100);
-  vertex(   0,    0,  100);
-
-  vertex( 100, 100, -100);
-  vertex(-100, 100, -100);
-  vertex(   0,   0,  100);
-
-  vertex(-100,  100, -100);
-  vertex(-100, -100, -100);
-  vertex(   0,    0,  100);
-  endShape();
-  popMatrix();
-  rotateY(triCount += .006);
-  if (triCount == 360) {
-    triCount = 0;
-  }
-  //box(100);
 }
 
 void captureEvent(Capture video) {
@@ -78,42 +46,27 @@ void captureEvent(Capture video) {
   //video.filter(THRESHOLD, 0.3);
 }
 
-
-void keyPressed() {
-  //pause/play song with space
-  if(key == ' '){
-    
-  }
-}
-
 void addFilter() {
   video.loadPixels();
   for (int x = 0; x < video.width; x++) {
     for (int y = 0; y < video.height; y++) {
-      //int loc = x + y * video.width;
-      //color currentColor = video.pixels[loc];
-      //float r = red(currentColor);
-      //float g = green(currentColor);
-      //float b = blue(currentColor);
-      //if (r+g+b < 200) {
-      //  video.pixels[loc] = #000000;
-      //} else {
-      //  video.pixels[loc] = #FFFFFF;
-      //}
-      //if (video.pixels[loc] == #FFFFFF) {
-      //  //translate(10, 10, 0);
-      //}
       int loc = x + y * video.width; 
-      color c = video.pixels[loc]; 
+      color currentColor = video.pixels[loc]; 
+      float r = red(currentColor);
+      float g = green(currentColor);
+      float b = blue(currentColor);
+      color newColor = color(r-25, g-25, b+75, 175);
       float z = brightness(video.pixels[loc]);
       if (z > 200) {
         z = 200;
       }        
       pushMatrix();
+      //rotateX(PI/8);
+      rotateY(-PI/16);
       translate(x,y,z);
-      fill(c);
-      noStroke();
-      rect(150,125,pixelSize,pixelSize);
+      fill(newColor);
+      noStroke(); 
+      rect(200,150, pixelSize,pixelSize);
       popMatrix(); 
     }
   }
