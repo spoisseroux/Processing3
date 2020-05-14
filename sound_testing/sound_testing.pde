@@ -52,19 +52,20 @@ void addFilter() {
     for (int y = 0; y < video.height; y++) {
       int loc = x + y * video.width; 
       color currentColor = video.pixels[loc]; 
-      float r = red(currentColor);
-      float g = green(currentColor);
-      float b = blue(currentColor);
-      color newColor = color(r-25, g-25, b+75, 175);
+      //float r = red(currentColor);
+      //float g = green(currentColor);
+      //float b = blue(currentColor);
+      //color newColor = color(r-25, g-25, b+75, 175);
       float z = brightness(video.pixels[loc]);
       if (z > 200) {
         z = 200;
       }        
       pushMatrix();
-      //rotateX(PI/8);
+      rotateX(PI/8);
       rotateY(-PI/16);
-      translate(x,y,z);
-      fill(newColor);
+      translate(x,y,z-200);
+      //fill(newColor);
+      fill(currentColor);
       noStroke(); 
       rect(200,150, pixelSize,pixelSize);
       popMatrix(); 
