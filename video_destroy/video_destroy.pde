@@ -26,8 +26,8 @@ void setup() {
   }
   
   //load VOID
-  video = new Movie(this, "void.mp4");
-  song = new SoundFile(this, "void.wav");
+  video = new Movie(this, "gradient.mp4");
+  song = new SoundFile(this, "silence.mp3");
   
   loudness = new Amplitude(this);
   loudness.input(song);
@@ -47,8 +47,9 @@ void draw() {
       background(#FFFFFF);
     }
   } 
-  //ventolin
-  image(video, width/4+20, height/4+43);
+  //video behind
+  image(video, width/4-72, height/4-45);
+
   addFilter();
   //saveFrame("frames/frame-#########.png");
 }
@@ -62,7 +63,8 @@ void addFilter() {
       color currentColor = video.pixels[loc]; 
       float z = brightness(video.pixels[loc]);
       if (z > 200) {
-        z = 200;
+        //z = 200;
+        z = 100;
       }
       if (z < 10) {
         z = -10;
@@ -145,7 +147,8 @@ void addFilter() {
       
       fill(currentColor);
       noStroke(); 
-      rect(260, 190, pixelSize,pixelSize);
+      //rect(260, 190, pixelSize,pixelSize);
+      rect(150, 110, pixelSize,pixelSize);
       popMatrix(); 
     }
   }
