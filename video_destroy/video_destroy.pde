@@ -24,11 +24,11 @@ void setup() {
   if (whiteBG == true) {
     background(#FFFFFF);
   }
-  
+
   //load VOID
-  video = new Movie(this, "gradient.mp4");
-  song = new SoundFile(this, "silence.mp3");
-  
+  video = new Movie(this, "void.mp4");
+  song = new SoundFile(this, "void.wav");
+
   loudness = new Amplitude(this);
   loudness.input(song);
 }
@@ -47,9 +47,8 @@ void draw() {
       background(#FFFFFF);
     }
   } 
-  //video behind
-  image(video, width/4-72, height/4-45);
-
+  //ventolin
+  image(video, width/4+20, height/4+43);
   addFilter();
   //saveFrame("frames/frame-#########.png");
 }
@@ -63,8 +62,7 @@ void addFilter() {
       color currentColor = video.pixels[loc]; 
       float z = brightness(video.pixels[loc]);
       if (z > 200) {
-        //z = 200;
-        z = 100;
+        z = 200;
       }
       if (z < 10) {
         z = -10;
@@ -139,16 +137,15 @@ void addFilter() {
         z+=random(0,3);
       }
       pushMatrix();
-      
+
       //rotate according to amp
       rotateX(rotX*PI/32);
       rotateY(rotY*PI/32);
       translate(x,y,z);
-      
+
       fill(currentColor);
       noStroke(); 
-      //rect(260, 190, pixelSize,pixelSize);
-      rect(150, 110, pixelSize,pixelSize);
+      rect(260, 190, pixelSize,pixelSize);
       popMatrix(); 
     }
   }
@@ -164,7 +161,7 @@ void movieEvent(Movie video) {
 void keyPressed() {
   if(key == ' '){
     video.play();
-    
+
     //video volume down, song volume up to analyze amp
     video.volume(0);
     song.play();

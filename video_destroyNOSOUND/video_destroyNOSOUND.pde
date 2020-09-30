@@ -5,13 +5,13 @@ import processing.sound.*;
 
 //OPTIONS
 int pixelSize = 2;
-boolean whiteBG = true;
+boolean whiteBG = false;
 //OPTIONS END
 
 Movie video;
 Movie back;
 color black = #000000;
-int clearInt = 5;
+int clearInt = 0;
 
 void setup() {
   size(950,600,P3D);
@@ -33,7 +33,7 @@ void draw() {
     clearInt += 1;
   }
   if (clearInt%2 == 0) {
-    clear();
+    //clear();
     if (whiteBG == true) {
       background(#FFFFFF);
     }
